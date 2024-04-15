@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>할 일 추가</title>
+    <style>
+        body {
+            background-color: #f0f0f0; /* 배경색 */
+            font-family: Arial, sans-serif; /* 글꼴 */
+            color: #333; /* 글자색 */
+        }
+        h1 {
+            color: #9400D3; /* 제목색 */
+        }
+        form {
+            background-color: #fff; /* 폼 배경색 */
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 */
+            max-width: 500px; /* 최대 너비 */
+            margin: 0 auto; /* 가운데 정렬 */
+        }
+        button[type="submit"] {
+            background-color: #9400D3; /*  버튼 배경색 */
+            color: #fff; /* 버튼 글자색 */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #6A0DAD; /* 버튼 호버 시 배경색 */
+        }
+        input[type="text"], textarea {
+            width: 100%; /* 입력 필드 너비 */
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc; /* 입력 필드 테두리 */
+            border-radius: 5px;
+            box-sizing: border-box; /* 입력 필드 박스 크기에 포함 */
+        }
+    </style>
+</head>
+<body>
+    <h1>할 일 추가</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">할 일 추가</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!-- todo_list.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>할 일 목록</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* 글꼴 */
+            background-color: #f0f0f0; /* 배경색 */
+            color: #333; /* 글자색 */
+        }
+        h1 {
+            color: #0066cc; /* 제목색 */
+        }
+        ul {
+            list-style-type: none; /* 리스트 스타일 제거 */
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #fff; /* 리스트 아이템 배경색 */
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 */
+        }
+        li a {
+            margin-left: 10px; /* 링크 간격 조정 */
+            color: #0066cc; /* 링크 색상 */
+            text-decoration: none; /* 밑줄 제거 */
+        }
+        li a:hover {
+            text-decoration: underline; /* 호버 시 밑줄 표시 */
+        }
+        .add-link {
+            display: block; /* 링크를 블록 요소로 변환하여 줄 바꿈 추가 */
+            margin-top: 20px; /* 링크 상단 간격 조정 */
+            color: #0066cc; /* 링크 색상 */
+            text-decoration: none; /* 밑줄 제거 */
+        }
+        .add-link:hover {
+            text-decoration: underline; /* 호버 시 밑줄 표시 */
+        }
+    </style>
+</head>
+<body>
+    <h1>할 일 목록</h1>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                {{ task.title }} 
+                <!-- 수정 링크 -->
+                <a href="{% url 'edit_task' task.pk %}">수정</a>
+                <!-- 삭제 링크 -->
+                <a href="{% url 'delete_task' task.pk %}">삭제</a>
+                <!-- 상세 설명 링크 -->
+                <a href="{% url 'task_detail' task.pk %}">상세 설명</a>
+            </li>
+        {% empty %}
+            <li>할 일이 없습니다.</li>
+        {% endfor %}
+    </ul>
+    <a class="add-link" href="{% url 'add_task' %}">할 일 추가</a>
+</body>
+</html>
+
+

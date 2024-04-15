@@ -1,0 +1,50 @@
+<!--세부 사항 확인 템플릿-->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>할 일 상세 정보</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* 글꼴 */
+            background-color: #f0f0f0; /* 배경색 */
+            color: #333; /* 글자색 */
+            padding: 20px; /* 전체 내용 패딩 */
+        }
+        .container {
+            max-width: 600px; /* 최대 너비 */
+            margin: 0 auto; /* 가운데 정렬 */
+            background-color: #fff; /* 내용 영역 배경색 */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 */
+        }
+        h1 {
+            color: #FFB6C1; 
+            margin-bottom: 20px; /* 제목 아래 여백 */
+        }
+        p {
+            margin-bottom: 10px; /* 문단 간격 */
+        }
+        a {
+            color: #FFC0CB; 
+            text-decoration: none; /* 밑줄 제거 */
+            transition: color 0.3s; /* 링크 색상 변화 애니메이션 */
+        }
+        a:hover {
+            color: #FF69B4; /* 호버 시 링크 색상 변경 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ task.title }}</h1>
+        <p>마감일: {{ task.due_date }}</p>
+        <p>내용: {{ task.description }}</p>
+        <!-- 수정 링크 -->
+        <a href="{% url 'edit_task' task.pk %}">수정</a>
+        <!-- 삭제 링크 -->
+        <a href="{% url 'delete_task' task.pk %}">삭제</a>
+    </div>
+</body>
+</html>
