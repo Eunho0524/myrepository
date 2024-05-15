@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  web:
+    image: myapp
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      MYSQL_DATABASE: tododb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
+
+  db:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: tododb
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
+
+
